@@ -1,0 +1,24 @@
+{
+  "name": "uiueutils",
+  "version": "1.0.0",
+  "description": "This is library that help you deal with UIUE issues",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pekonchan/UIUEUtils.git"
+  },
+  "keywords": [
+    "utils",
+    "UI",
+    "UE"
+  ],
+  "author": "pekonchan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pekonchan/UIUEUtils/issues"
+  },
+  "homepage": "https://github.com/pekonchan/UIUEUtils#readme"
+}
