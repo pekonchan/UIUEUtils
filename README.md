@@ -2,6 +2,8 @@
 
 The library is constantly maintained in iterative updates...
 
+* [中文文档](https://github.com/pekonchan/UIUEUtils/blob/main/docs/readme_cn.md)
+
 Currently achieved capabilities:
 - backWatcher：Block browser backward behavior
 - decimalRound：Specify how many decimal points to keep for rounding (precision)
