@@ -2,17 +2,17 @@ interface addOption {
     timer?: number,
     msg?: string
 }
-type functionOrNull = { (): void } | null
 enum addType {state = 'state', hash = 'hash'}
 
 
-let watcher:functionOrNull = null
+let removeWatcher = () => {}
 
 function add (
-    callback:Function,
-    type:string = 'state',
-    { timer, msg }:addOption = {}
+    type: string = 'state',
+    callback?: Function,
+    addOption?: addOption
 ) {
+    const { timer, msg } = addOption || {}
     let handler!:EventListenerOrEventListenerObject
     let eventName!:keyof WindowEventMap
     if (type === addType.state) {
@@ -64,15 +64,14 @@ function add (
         window.removeEventListener(eventName, handler)
         history.back()
     }
-    watcher = remove
+    removeWatcher = remove
     return remove
 }
 
 export default {
-    watcher,
     add,
     remove () {
-        watcher!()
+        removeWatcher()
     },
     back () {
         history.go(-2)

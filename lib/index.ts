@@ -1,1 +1,1 @@
-export { default } from "./backWatcher"
+export { default as backWatcher } from "./backWatcher"

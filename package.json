@@ -2,9 +2,10 @@
   "name": "uiueutils",
   "version": "1.0.0",
   "description": "This is library that help you deal with UIUE issues",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": ["dist"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && tsc"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/pekonchan/UIUEUtils/issues"
   },
-  "homepage": "https://github.com/pekonchan/UIUEUtils#readme"
+  "homepage": "https://github.com/pekonchan/UIUEUtils#readme",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
 }
