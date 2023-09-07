@@ -1,6 +1,6 @@
 {
   "name": "uiueutils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is library that help you deal with UIUE issues",
   "main": "dist/index.js",
   "files": ["dist"],
