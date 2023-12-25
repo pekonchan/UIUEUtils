@@ -6,6 +6,7 @@ The library is constantly maintained in iterative updates...
 
 Currently achieved capabilities:
 - backWatcher：Block browser backward behavior
+- scrollOnly: All containers can not scroll but some containers which is specified can be, it can be used to solve the "scroll prenetrate" problem.
 - decimalRound：Specify how many decimal points to keep for rounding (precision)
 - formatMoney：The numbers are formatted and can be converted to monetary form
 - formatToThousandths：Format The number is in the form of a comma
@@ -32,7 +33,7 @@ backWatcher.remove()
 
 // Add Callback
 const remove = backWatcher.add('state', () => {
-    console.info('已拦截')
+    console.info('intercepted!')
 })
 // Unblock, same as backWatcher.remove()
 remove()
@@ -44,7 +45,48 @@ backWatcher.add('hash', null, {
 })
 ```
 
+## scrollOnly
+All containers can not scroll but some containers which is specified can be, it can be used to solve the "scroll prenetrate" problem.
 
+```js
+/**
+ * @param {Node} - Specify the containers can be scrolled
+ * @returns {Object} Return an instance of setting
+ */
+import { scrollOnly } from 'uiueutils'
+
+// Specify '#example-box' to scroll, and the rest of the page elements cannot scroll
+scrollOnly(document.querySelector('#example-box'))
+
+// Multiple elements can be specified
+scrollOnly([document.querySelector('#example-box1'), document.querySelector('#example-box2')])
+
+// Recommended usage:
+// When setted, an instance object is returned
+const contianerOnly = scrollOnly(document.querySelector('#example-box'))
+// When the time is right and you no longer need the Settings, you should cancel them
+contianerOnly.off()
+```
+
+Typical example, such as opening modal window to prevent modal window from rolling and causing "penetration" to the "outer layer"
+
+```js
+var contianerOnly = null
+
+function openModal () {
+    // ... oepn the modal window
+    // ...
+    // When opened, set to allow only popup containers to scroll
+    contianerOnly = scrollOnly(document.querySelector('#dialog-modal'))
+}
+
+function closeModal () {
+    // ... close the modal window
+    // ...
+    // After closed, cancel the setting
+    contianerOnly.off()
+}
+```
 
 ## decimalRound
 Specify how many decimal points to keep for rounding (precision)

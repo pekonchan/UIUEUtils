@@ -7,6 +7,7 @@ This is library that help you deal with UIUE issues
 
 目前已实现能力：
 - backWatcher：拦截浏览器后退行为
+- scrollOnly: 指定除某些容器外都不可以滚动，适用于解决“滚动穿透”的问题
 - decimalRound：指定保留多少位小数点进行四舍五入（精准）
 - formatMoney：对数字进行格式化，可转换为货币形式
 - formatToThousandths：格式数字为千分符形式
@@ -45,6 +46,48 @@ backWatcher.add('hash', null, {
 })
 ```
 
+## scrollOnly
+指定除某些容器外都不可以滚动，适用于解决“滚动穿透”的问题
+
+```js
+/**
+ * @param {Node} - 指定具体的容器可以滚动，其余都不行
+ * @returns {Object} 返回一个设置了滚动规则的实例
+ */
+import { scrollOnly } from 'uiueutils'
+
+// 指定'#example-box'可以滚动，其余页面元素不能发生滚动
+scrollOnly(document.querySelector('#example-box'))
+
+// 可指定多个元素
+scrollOnly([document.querySelector('#example-box1'), document.querySelector('#example-box2')])
+
+// 建议使用方法：
+// 开启后会返回一个实例对象
+const contianerOnly = scrollOnly(document.querySelector('#example-box'))
+// 在合适的时机下，不再需要禁止其他元素滚动了，就取消开启
+contianerOnly.off()
+```
+
+典型例子，例如打开了弹窗，防止弹窗滚动引起“穿透”到“外层”
+
+```js
+var contianerOnly = null
+
+function openModal () {
+    // ... 打开了弹窗
+    // ...
+    // 打开后设置只允许弹窗的容器可滚动
+    contianerOnly = scrollOnly(document.querySelector('#dialog-modal'))
+}
+
+function closeModal () {
+    // ... 关闭了弹窗
+    // ...
+    // 关闭后恢复原样
+    contianerOnly.off()
+}
+```
 
 
 ## decimalRound
