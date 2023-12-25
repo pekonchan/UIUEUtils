@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "files": ["dist"],
   "scripts": {
+    "serve": "node example/index.js",
     "build": "rm -rf dist && tsc"
   },
   "repository": {
