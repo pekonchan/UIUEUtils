@@ -8,14 +8,14 @@ module.exports = {
         {
             format: 'iife',
             name: '$uu',
-            file: 'dist/uiueutils.min.js',
+            file: 'docs/dist/uiueutils.min.js',
             plugins: [
                 terser()
             ]
         },
         {
             format: 'es',
-            file: 'dist/uiueutils.es.js'
+            file: 'docs/dist/uiueutils.es.js'
         }
     ],
     plugins: [

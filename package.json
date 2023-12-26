@@ -3,13 +3,13 @@
   "version": "1.2.0",
   "description": "This is library that help you deal with UIUE issues",
   "type": "module",
-  "module": "dist/uiueutils.es.js",
-  "types": "./dist/index.d.ts",
+  "module": "docs/dist/uiueutils.es.js",
+  "types": "docs/dist/index.d.ts",
   "files": [
-    "dist"
+    "docs/dist"
   ],
   "scripts": {
-    "serve": "node example/index.js",
+    "serve": "node example/index.cjs",
     "compile": "rm -rf compile && tsc",
     "build": "rm -rf dist && rollup -c"
   },
