@@ -83,7 +83,8 @@ class ContainerOnlyScroll {
 }
 
 export default function (target: Node|Node[]) {
-    const elements = Array.isArray(target) ? target : [target]
+    let elements = Array.isArray(target) ? target : [target]
+    elements = elements.filter(item => item)
     const constainerScroll = new ContainerOnlyScroll(elements)
     constainerScroll.on()
     return constainerScroll

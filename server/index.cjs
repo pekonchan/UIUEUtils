@@ -22,16 +22,20 @@ const server = http.createServer(async (req, res) => {
         case '/':
             text = await getSourceText('docs/index.html')
             break
+        case '/dist/uiueutils.es.js':
+            text = await getSourceText('docs/dist/uiueutils.es.js')
+            res.writeHead(200, { 'Content-Type': 'application/javascript' })
+            break
         case '/favicon.ico':
             break
         default:
             let url = pathname
-            const matched = pathname.match(/\.(.+)$/)
+            const matched = pathname.match(/\.([^.]+?)$/)
             let ext = matched ? matched[1] : ''
-            if (pathname.indexOf('/dist') === 0 && !ext) {
-                ext = 'js'
-                url += '/index.js'
-            }
+            // if (pathname.indexOf('/docs/dist') === 0 && !ext) {
+            //     ext = 'js'
+            //     url += '/index.js'
+            // }
             switch (ext) {
                 case 'js':
                     res.writeHead(200, { 'Content-Type': 'application/javascript' })

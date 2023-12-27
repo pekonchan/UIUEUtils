@@ -5,12 +5,37 @@ The library is constantly maintained in iterative updates...
 * [中文文档](https://github.com/pekonchan/UIUEUtils/blob/main/docs/readme_cn.md)
 
 Currently achieved capabilities:
-- backWatcher：Block browser backward behavior
 - scrollOnly: All containers can not scroll but some containers which is specified can be, it can be used to solve the "scroll prenetrate" problem.
+- backWatcher：Block browser backward behavior
 - decimalRound：Specify how many decimal points to keep for rounding (precision)
 - formatMoney：The numbers are formatted and can be converted to monetary form
 - formatToThousandths：Format The number is in the form of a comma
 - getDateDiff：Calculate how many days are the difference between the two timestamps, rounded up
+
+support the module installation & script tag installation
+
+### usage
+
+module installation 
+```
+npm i uiueutils
+
+pnpm add uiueutils
+
+yarn add uiueutils
+```
+
+script tag installation
+
+```
+// set the url of the uiueutils.min.js file you downloaded
+<script src="/uiueutils.min.js"></script>
+
+// You can use "window.$uu" get the specified method
+window.$uu.scrollOnly
+```
+
+The following documentation use the module installation to describes
 
 ## backWatcher
 Block browser backward behavior

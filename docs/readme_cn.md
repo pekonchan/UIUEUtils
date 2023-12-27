@@ -6,12 +6,37 @@ This is library that help you deal with UIUE issues
 该库不断维护迭代更新中...
 
 目前已实现能力：
-- backWatcher：拦截浏览器后退行为
 - scrollOnly: 指定除某些容器外都不可以滚动，适用于解决“滚动穿透”的问题
+- backWatcher：拦截浏览器后退行为
 - decimalRound：指定保留多少位小数点进行四舍五入（精准）
 - formatMoney：对数字进行格式化，可转换为货币形式
 - formatToThousandths：格式数字为千分符形式
 - getDateDiff：计算两个时间戳差多少天，向上取整
+
+支持模块包安装和script标签安装
+
+### usage
+
+模块包安装
+```
+npm i uiueutils
+
+pnpm add uiueutils
+
+yarn add uiueutils
+```
+
+script标签安装
+
+```
+// 引入你下载下来的uiueutils.min.js文件
+<script src="/uiueutils.min.js"></script>
+
+// 引入之后可以通过window.$uu访问到具体的方法，例如：
+window.$uu.scrollOnly
+```
+
+以下说明文档主要以模块包的引入方式进行说明。
 
 ## backWatcher
 拦截浏览器后退行为

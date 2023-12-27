@@ -1,12 +1,17 @@
 {
   "name": "uiueutils",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "This is library that help you deal with UIUE issues",
-  "main": "dist/index.js",
-  "files": ["dist"],
+  "type": "module",
+  "module": "docs/dist/uiueutils.es.js",
+  "types": "docs/dist/index.d.ts",
+  "files": [
+    "docs/dist"
+  ],
   "scripts": {
-    "serve": "node example/index.js",
-    "build": "rm -rf dist && tsc"
+    "serve": "node example/index.cjs",
+    "compile": "rm -rf compile && tsc",
+    "build": "rm -rf dist && rollup -c"
   },
   "repository": {
     "type": "git",
@@ -25,6 +30,10 @@
   },
   "homepage": "https://github.com/pekonchan/UIUEUtils#readme",
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.9.1",
+    "rollup-plugin-typescript2": "^0.36.0",
     "typescript": "^5.1.6"
   }
 }
