@@ -37,39 +37,6 @@ window.$uu.scrollOnly
 
 The following documentation use the module installation to describes
 
-## backWatcher
-Block browser backward behavior
-
-```js
-/**
- * 方法入参说明
- * @param {String} type - There are two ways to implement interception: pushState and hash. The values correspond to state and hash
- * @param {Function} callback - Listen to the practice function of the rollback, such as adding a double confirmation pop-up window
- * @param {OBject} options - { timer, msg } timer：Delay the number of seconds to add an intercept；msg：The added state or hash value
- * @returns {Function} A function used to cancel interception, which cancels interception after a single call
- */
-
-import { backWatcher } from 'uiueutils'
-
-// Add Event
-backWatcher.add('state')
-// Remove Event
-backWatcher.remove()
-
-// Add Callback
-const remove = backWatcher.add('state', () => {
-    console.info('intercepted!')
-})
-// Unblock, same as backWatcher.remove()
-remove()
-
-// Add the intercept and delay execution, and the hash value is stop
-backWatcher.add('hash', null, {
-    timer: 700,
-    msg: 'stop'
-})
-```
-
 ## scrollOnly
 All containers can not scroll but some containers which is specified can be, it can be used to solve the "scroll prenetrate" problem.
 
@@ -112,6 +79,41 @@ function closeModal () {
     contianerOnly.off()
 }
 ```
+
+## backWatcher
+Block browser backward behavior
+
+```js
+/**
+ * 方法入参说明
+ * @param {String} type - There are two ways to implement interception: pushState and hash. The values correspond to state and hash
+ * @param {Function} callback - Listen to the practice function of the rollback, such as adding a double confirmation pop-up window
+ * @param {OBject} options - { timer, msg } timer：Delay the number of seconds to add an intercept；msg：The added state or hash value
+ * @returns {Function} A function used to cancel interception, which cancels interception after a single call
+ */
+
+import { backWatcher } from 'uiueutils'
+
+// Add Event
+backWatcher.add('state')
+// Remove Event
+backWatcher.remove()
+
+// Add Callback
+const remove = backWatcher.add('state', () => {
+    console.info('intercepted!')
+})
+// Unblock, same as backWatcher.remove()
+remove()
+
+// Add the intercept and delay execution, and the hash value is stop
+backWatcher.add('hash', null, {
+    timer: 700,
+    msg: 'stop'
+})
+```
+
+
 
 ## decimalRound
 Specify how many decimal points to keep for rounding (precision)

@@ -38,39 +38,6 @@ window.$uu.scrollOnly
 
 以下说明文档主要以模块包的引入方式进行说明。
 
-## backWatcher
-拦截浏览器后退行为
-
-```js
-/**
- * 方法入参说明
- * @param {String} type - 实现拦截的方式，分为使用pushState和添加hash两种，值对应为 state 和 hash
- * @param {Function} callback - 监听到回退的实践函数，例如添加二次确认弹窗等
- * @param {OBject} options - { timer, msg } timer：延迟添加拦截的秒数；msg：添加的state值或hash值
- * @returns {Function} 用于取消拦截的函数，调用一次即取消了拦截
- */
-
-import { backWatcher } from 'uiueutils'
-
-// 添加拦截
-backWatcher.add('state')
-// 取消拦截
-backWatcher.remove()
-
-// 添加拦截回调函数
-const remove = backWatcher.add('state', () => {
-    console.info('已拦截')
-})
-// 取消拦截，跟backWatcher.remove()一样
-remove()
-
-// 添加拦截，并延迟执行，且添加的hash值是stop
-backWatcher.add('hash', null, {
-    timer: 700,
-    msg: 'stop'
-})
-```
-
 ## scrollOnly
 指定除某些容器外都不可以滚动，适用于解决“滚动穿透”的问题
 
@@ -113,6 +80,40 @@ function closeModal () {
     contianerOnly.off()
 }
 ```
+
+## backWatcher
+拦截浏览器后退行为
+
+```js
+/**
+ * 方法入参说明
+ * @param {String} type - 实现拦截的方式，分为使用pushState和添加hash两种，值对应为 state 和 hash
+ * @param {Function} callback - 监听到回退的实践函数，例如添加二次确认弹窗等
+ * @param {OBject} options - { timer, msg } timer：延迟添加拦截的秒数；msg：添加的state值或hash值
+ * @returns {Function} 用于取消拦截的函数，调用一次即取消了拦截
+ */
+
+import { backWatcher } from 'uiueutils'
+
+// 添加拦截
+backWatcher.add('state')
+// 取消拦截
+backWatcher.remove()
+
+// 添加拦截回调函数
+const remove = backWatcher.add('state', () => {
+    console.info('已拦截')
+})
+// 取消拦截，跟backWatcher.remove()一样
+remove()
+
+// 添加拦截，并延迟执行，且添加的hash值是stop
+backWatcher.add('hash', null, {
+    timer: 700,
+    msg: 'stop'
+})
+```
+
 
 
 ## decimalRound
